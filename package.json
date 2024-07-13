@@ -1,0 +1,18 @@
+{
+  "name": "websocket-server",
+  "version": "1.0.0",
+  "description": "WebSocket server on Glitch",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dgram": "^1.0.1",
+    "express": "^4.19.2",
+    "ws": "^8.18.0"
+  }
+}
