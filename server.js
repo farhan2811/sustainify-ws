@@ -19,14 +19,18 @@ const server = app.listen(port, () => {
 const wss = new WebSocket.Server({ server });
 const udpSocket = dgram.createSocket('udp4');
 
+wss.on('listening', (ws) => {
+  console.log('WebSocket client listening on 3000');
+})
+
 wss.on('connection', (ws) => {
   console.log('WebSocket client connected');
 
   ws.on('message', (message) => {
-    console.log('Received message from WebSocket client:', message);
+    console.log('Received message from WebSocket client:', message.toString());
 
     // Send UDP discovery message
-    udpSocket.send(message, 0, message.length, 1982, '239.255.255.250', (err) => {
+    udpSocket.send(message.toString(), 0, message.length, 1982, '239.255.255.250', (err) => {
       if (err) {
         console.error('UDP message send error:', err);
       } else {
